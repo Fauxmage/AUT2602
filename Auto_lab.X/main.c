@@ -32,11 +32,75 @@ void init_button(){
 }
 
 
+void toggle_led()
+
+
 int main(void) {
     init_led();
     init_button();
+    int toggle_status = 0;
     
     while (1) {
+
+
+        // Check if the button is pressed
+        if (!(PORTB.IN & PIN2_bm)) {
+            // Button is pressed
+            _delay_ms(10); // Debounce delay
+            if (!(PORTB.IN & PIN2_bm)) {
+                // Button is still pressed after debounce
+                if (toggle_status == 0) {
+                    toggle_status = 1;
+                } else {
+                    toggle_status = 0;
+                }
+                while (!(PORTB.IN & PIN2_bm)); // Wait for button release
+            }
+        }
+
+        // Control the LED based on toggle_status
+        if (toggle_status == 0) {
+            PORTB.OUTSET = PIN3_bm; // Turn off the LED
+        } else {
+            PORTB.OUTCLR = PIN3_bm; // Turn on the LED
+        }
+
+
+
+
+       
+        // // If button is pushed down
+        // if (PORTB.IN & (1 << 2)){
+        //     if (toggle_status == 0){
+        //         toggle_status = 1;
+        //     }
+            
+        // }
+        // if (PORTB.IN & (1 << 2)){
+        //     if (toggle_status == 1){
+        //         toggle_status = 0;
+        //     }
+            
+        // }
+        
+
+        // if (toggle_status == 0){
+        //     PORTB.OUTSET = (1 << 3);
+        // }
+        // else{
+        //     PORTB.OUTSET = (0 << 3);
+        // }
+
+
+
+
+
+
+
+
+
+
+
 
         /*
         // OPPGAVE 2a) 
@@ -56,7 +120,8 @@ int main(void) {
         */
 
 
-
+       
+       /*
        // Problem 2d) Make LED light up when button is pushed down
        // If button is pushed down, then set PB3 to HIGH
         if (PORTB.IN & (1 << 2)){
@@ -68,9 +133,15 @@ int main(void) {
             PORTB.OUTCLR = (1 << 3); 
         }
 
+        */
 
+
+        /*
+        PROBLEM 2e) Toggle light on and off
+        */
 
     }
+
     
     return 0;
 }
