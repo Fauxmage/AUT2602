@@ -23,6 +23,8 @@ void led_blink(){
     PORTB.OUTTGL = (1 << 3);
 }
 
+
+// Function for problem 2d), make the LED light up when SW0 is held down
 void init_button(){
     PORTB.DIRCLR = (1 << 2); // Set Pin 2 of Port B as an input
     PORTB.PIN2CTRL |= PORT_PULLUPEN_bm; // Enable the pull-up resistor on Pin 2
