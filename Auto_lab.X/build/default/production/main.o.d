@@ -1,6 +1,4 @@
 build/default/production/main.o.d build/default/production/main.o: main.c \
- /Applications/microchip/xc8/v2.41/avr/lib/gcc/avr/5.4.0/include/xc.h \
- /Applications/microchip/xc8/v2.41/avr/lib/gcc/avr/5.4.0/include/cci.h \
  /Applications/microchip/xc8/v2.41/avr/avr/include/avr/io.h \
  /Applications/microchip/xc8/v2.41/avr/avr/include/avr/sfr_defs.h \
  /Applications/microchip/xc8/v2.41/avr/avr/include/inttypes.h \
@@ -15,12 +13,9 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
  /Applications/microchip/xc8/v2.41/avr/avr/include/avr/xmega.h \
  /Applications/microchip/xc8/v2.41/avr/avr/include/avr/fuse.h \
  /Applications/microchip/xc8/v2.41/avr/avr/include/avr/lock.h \
- /Applications/microchip/xc8/v2.41/avr/avr/include/stdio.h \
- /Applications/microchip/xc8/v2.41/avr/avr/include/stdlib.h
-
-/Applications/microchip/xc8/v2.41/avr/lib/gcc/avr/5.4.0/include/xc.h:
-
-/Applications/microchip/xc8/v2.41/avr/lib/gcc/avr/5.4.0/include/cci.h:
+ /Applications/microchip/xc8/v2.41/avr/avr/include/util/delay.h \
+ /Applications/microchip/xc8/v2.41/avr/avr/include/util/delay_basic.h \
+ /Applications/microchip/xc8/v2.41/avr/avr/include/math.h
 
 /Applications/microchip/xc8/v2.41/avr/avr/include/avr/io.h:
 
@@ -50,6 +45,8 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
 
 /Applications/microchip/xc8/v2.41/avr/avr/include/avr/lock.h:
 
-/Applications/microchip/xc8/v2.41/avr/avr/include/stdio.h:
+/Applications/microchip/xc8/v2.41/avr/avr/include/util/delay.h:
 
-/Applications/microchip/xc8/v2.41/avr/avr/include/stdlib.h:
+/Applications/microchip/xc8/v2.41/avr/avr/include/util/delay_basic.h:
+
+/Applications/microchip/xc8/v2.41/avr/avr/include/math.h:
