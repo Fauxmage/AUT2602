@@ -38,10 +38,10 @@ int main(void) {
     
     while (1) {
 
-        /*
+        
         // OPPGAVE 2a) 
         init_led();
-        */
+        
        
 
        /*

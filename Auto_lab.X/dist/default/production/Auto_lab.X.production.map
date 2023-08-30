@@ -365,20 +365,20 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x3a59
+.debug_info     0x0000000000000000     0x3a68
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000     0x3545 /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8/avr/lib/avrxmega4/memx-const/crtavr128db48.o
- .debug_info    0x0000000000003545      0x514 build/default/production/main.o
+ .debug_info    0x0000000000003545      0x523 build/default/production/main.o
 
 .debug_abbrev   0x0000000000000000     0x3352
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000     0x3274 /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8/avr/lib/avrxmega4/memx-const/crtavr128db48.o
  .debug_abbrev  0x0000000000003274       0xde build/default/production/main.o
 
-.debug_line     0x0000000000000000      0x361
+.debug_line     0x0000000000000000      0x35b
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000      0x208 /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8/avr/lib/avrxmega4/memx-const/crtavr128db48.o
- .debug_line    0x0000000000000208      0x159 build/default/production/main.o
+ .debug_line    0x0000000000000208      0x153 build/default/production/main.o
 
 .debug_frame    0x0000000000000000       0x54
  *(.debug_frame)
@@ -425,102 +425,102 @@ LOAD data_init
  .note.gnu.avr.deviceinfo
                 0x0000000000000000       0x40 /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8/avr/lib/avrxmega4/memx-const/crtavr128db48.o
 
-.text.main      0x000000000000010c       0x1e
- .text.main     0x000000000000010c       0x1e build/default/production/main.o
+.text.main      0x000000000000010c       0x22
+ .text.main     0x000000000000010c       0x22 build/default/production/main.o
                 0x000000000000010c                main
 
-.text.exit      0x000000000000012a       0x16
- .text.exit     0x000000000000012a       0x16 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
-                0x000000000000012a                exit
+.text.exit      0x000000000000012e       0x16
+ .text.exit     0x000000000000012e       0x16 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
+                0x000000000000012e                exit
 
 .text.init_button
-                0x0000000000000140       0x10
+                0x0000000000000144       0x10
  .text.init_button
-                0x0000000000000140       0x10 build/default/production/main.o
-                0x0000000000000140                init_button
+                0x0000000000000144       0x10 build/default/production/main.o
+                0x0000000000000144                init_button
 
-.text           0x0000000000000150        0x4
- .text          0x0000000000000150        0x4 /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8/avr/lib/avrxmega4/memx-const/crtavr128db48.o
-                0x0000000000000150                __vector_42
-                0x0000000000000150                __vector_22
-                0x0000000000000150                __vector_28
-                0x0000000000000150                __vector_1
-                0x0000000000000150                __vector_32
-                0x0000000000000150                __vector_34
-                0x0000000000000150                __vector_24
-                0x0000000000000150                __vector_12
-                0x0000000000000150                __vector_55
-                0x0000000000000150                __vector_46
-                0x0000000000000150                __bad_interrupt
-                0x0000000000000150                __vector_6
-                0x0000000000000150                __vector_31
-                0x0000000000000150                __vector_35
-                0x0000000000000150                __vector_39
-                0x0000000000000150                __vector_3
-                0x0000000000000150                __vector_23
-                0x0000000000000150                __vector_30
-                0x0000000000000150                __vector_45
-                0x0000000000000150                __vector_25
-                0x0000000000000150                __vector_11
-                0x0000000000000150                __vector_54
-                0x0000000000000150                __vector_13
-                0x0000000000000150                __vector_17
-                0x0000000000000150                __vector_19
-                0x0000000000000150                __vector_56
-                0x0000000000000150                __vector_7
-                0x0000000000000150                __vector_49
-                0x0000000000000150                __vector_41
-                0x0000000000000150                __vector_43
-                0x0000000000000150                __vector_27
-                0x0000000000000150                __vector_5
-                0x0000000000000150                __vector_33
-                0x0000000000000150                __vector_47
-                0x0000000000000150                __vector_52
-                0x0000000000000150                __vector_37
-                0x0000000000000150                __vector_4
-                0x0000000000000150                __vector_44
-                0x0000000000000150                __vector_51
-                0x0000000000000150                __vector_9
-                0x0000000000000150                __vector_2
-                0x0000000000000150                __vector_21
-                0x0000000000000150                __vector_15
-                0x0000000000000150                __vector_36
-                0x0000000000000150                __vector_58
-                0x0000000000000150                __vector_29
-                0x0000000000000150                __vector_60
-                0x0000000000000150                __vector_40
-                0x0000000000000150                __vector_8
-                0x0000000000000150                __vector_26
-                0x0000000000000150                __vector_48
-                0x0000000000000150                __vector_14
-                0x0000000000000150                __vector_57
-                0x0000000000000150                __vector_53
-                0x0000000000000150                __vector_10
-                0x0000000000000150                __vector_50
-                0x0000000000000150                __vector_16
-                0x0000000000000150                __vector_59
-                0x0000000000000150                __vector_18
-                0x0000000000000150                __vector_20
-                0x0000000000000150                __vector_38
+.text           0x0000000000000154        0x4
+ .text          0x0000000000000154        0x4 /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8/avr/lib/avrxmega4/memx-const/crtavr128db48.o
+                0x0000000000000154                __vector_42
+                0x0000000000000154                __vector_22
+                0x0000000000000154                __vector_28
+                0x0000000000000154                __vector_1
+                0x0000000000000154                __vector_32
+                0x0000000000000154                __vector_34
+                0x0000000000000154                __vector_24
+                0x0000000000000154                __vector_12
+                0x0000000000000154                __vector_55
+                0x0000000000000154                __vector_46
+                0x0000000000000154                __bad_interrupt
+                0x0000000000000154                __vector_6
+                0x0000000000000154                __vector_31
+                0x0000000000000154                __vector_35
+                0x0000000000000154                __vector_39
+                0x0000000000000154                __vector_3
+                0x0000000000000154                __vector_23
+                0x0000000000000154                __vector_30
+                0x0000000000000154                __vector_45
+                0x0000000000000154                __vector_25
+                0x0000000000000154                __vector_11
+                0x0000000000000154                __vector_54
+                0x0000000000000154                __vector_13
+                0x0000000000000154                __vector_17
+                0x0000000000000154                __vector_19
+                0x0000000000000154                __vector_56
+                0x0000000000000154                __vector_7
+                0x0000000000000154                __vector_49
+                0x0000000000000154                __vector_41
+                0x0000000000000154                __vector_43
+                0x0000000000000154                __vector_27
+                0x0000000000000154                __vector_5
+                0x0000000000000154                __vector_33
+                0x0000000000000154                __vector_47
+                0x0000000000000154                __vector_52
+                0x0000000000000154                __vector_37
+                0x0000000000000154                __vector_4
+                0x0000000000000154                __vector_44
+                0x0000000000000154                __vector_51
+                0x0000000000000154                __vector_9
+                0x0000000000000154                __vector_2
+                0x0000000000000154                __vector_21
+                0x0000000000000154                __vector_15
+                0x0000000000000154                __vector_36
+                0x0000000000000154                __vector_58
+                0x0000000000000154                __vector_29
+                0x0000000000000154                __vector_60
+                0x0000000000000154                __vector_40
+                0x0000000000000154                __vector_8
+                0x0000000000000154                __vector_26
+                0x0000000000000154                __vector_48
+                0x0000000000000154                __vector_14
+                0x0000000000000154                __vector_57
+                0x0000000000000154                __vector_53
+                0x0000000000000154                __vector_10
+                0x0000000000000154                __vector_50
+                0x0000000000000154                __vector_16
+                0x0000000000000154                __vector_59
+                0x0000000000000154                __vector_18
+                0x0000000000000154                __vector_20
+                0x0000000000000154                __vector_38
 
-.text._Exit     0x0000000000000154        0x4
- .text._Exit    0x0000000000000154        0x4 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(_Exit.o)
-                0x0000000000000154                _Exit
+.text._Exit     0x0000000000000158        0x4
+ .text._Exit    0x0000000000000158        0x4 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(_Exit.o)
+                0x0000000000000158                _Exit
 
 .text.__dummy_fini
-                0x0000000000000158        0x2
+                0x000000000000015c        0x2
  .text.__dummy_fini
-                0x0000000000000158        0x2 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
-                0x0000000000000158                _fini
+                0x000000000000015c        0x2 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
+                0x000000000000015c                _fini
 
 .text.__dummy_funcs_on_exit
-                0x000000000000015a        0x2
+                0x000000000000015e        0x2
  .text.__dummy_funcs_on_exit
-                0x000000000000015a        0x2 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
-                0x000000000000015a                __funcs_on_exit
+                0x000000000000015e        0x2 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
+                0x000000000000015e                __funcs_on_exit
 
 .text.__dummy_simulator_exit
-                0x000000000000015c        0x2
+                0x0000000000000160        0x2
  .text.__dummy_simulator_exit
-                0x000000000000015c        0x2 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
-                0x000000000000015c                __simulator_exit
+                0x0000000000000160        0x2 /Applications/microchip/xc8/v2.41/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avrxmega4/memx-const/libc.a(exit.o)
+                0x0000000000000160                __simulator_exit
