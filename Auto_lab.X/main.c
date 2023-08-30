@@ -32,7 +32,7 @@ void init_button(){
 }
 
 
-void toggle_led()
+void ISR(PORTB_PORT_vect);
 
 
 int main(void) {
@@ -44,58 +44,30 @@ int main(void) {
 
 
         // Check if the button is pressed
-        if (!(PORTB.IN & PIN2_bm)) {
+        if (!(PORTB.IN & PIN2_bm)){
             // Button is pressed
             _delay_ms(10); // Debounce delay
-            if (!(PORTB.IN & PIN2_bm)) {
+            if (!(PORTB.IN & PIN2_bm)){
                 // Button is still pressed after debounce
-                if (toggle_status == 0) {
+                if (toggle_status == 0){
                     toggle_status = 1;
-                } else {
+                } 
+                else{
                     toggle_status = 0;
                 }
-                while (!(PORTB.IN & PIN2_bm)); // Wait for button release
+
+                // Wait for button release
+                while (!(PORTB.IN & PIN2_bm)); 
             }
         }
 
         // Control the LED based on toggle_status
-        if (toggle_status == 0) {
-            PORTB.OUTSET = PIN3_bm; // Turn off the LED
-        } else {
-            PORTB.OUTCLR = PIN3_bm; // Turn on the LED
+        if (toggle_status == 0){
+            PORTB.OUTSET = (1 << 3); // Turn off the LED
+        } 
+        else{
+            PORTB.OUTCLR = (1 << 3); // Turn on the LED
         }
-
-
-
-
-       
-        // // If button is pushed down
-        // if (PORTB.IN & (1 << 2)){
-        //     if (toggle_status == 0){
-        //         toggle_status = 1;
-        //     }
-            
-        // }
-        // if (PORTB.IN & (1 << 2)){
-        //     if (toggle_status == 1){
-        //         toggle_status = 0;
-        //     }
-            
-        // }
-        
-
-        // if (toggle_status == 0){
-        //     PORTB.OUTSET = (1 << 3);
-        // }
-        // else{
-        //     PORTB.OUTSET = (0 << 3);
-        // }
-
-
-
-
-
-
 
 
 
