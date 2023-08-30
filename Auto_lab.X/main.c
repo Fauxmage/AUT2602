@@ -38,10 +38,10 @@ int main(void) {
     
     while (1) {
 
-        
+        /*
         // OPPGAVE 2a) 
         init_led();
-        
+        */
        
 
        /*
@@ -74,19 +74,3 @@ int main(void) {
     
     return 0;
 }
-
-// // Check if the button on Pin 2 is pressed
-// if (!(PORTB.IN & (1 << BUTTON_PIN))) {
-//     // Button is pressed, turn on the LED
-//     PORTB.OUTSET = (1 << LED_PIN); // Set Pin 3 of Port B to HIGH
-// } else {
-//     // Button is not pressed, turn off the LED
-//     PORTB.OUTCLR = (1 << LED_PIN); // Clear Pin 3 of Port B (set to LOW)
-// }
-
-/*
-void init_button() {
-    PORTB.DIRCLR = (1 << 2); // Set Pin 2 of Port B as an input
-    PORTB.PIN2CTRL |= PORT_PULLUPEN_bm; // Enable the pull-up resistor on Pin 2
-}
-*/
