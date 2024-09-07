@@ -15,7 +15,8 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
  /Applications/microchip/xc8/v2.41/avr/avr/include/avr/lock.h \
  /Applications/microchip/xc8/v2.41/avr/avr/include/util/delay.h \
  /Applications/microchip/xc8/v2.41/avr/avr/include/util/delay_basic.h \
- /Applications/microchip/xc8/v2.41/avr/avr/include/math.h
+ /Applications/microchip/xc8/v2.41/avr/avr/include/math.h \
+ /Applications/microchip/xc8/v2.41/avr/avr/include/avr/interrupt.h
 
 /Applications/microchip/xc8/v2.41/avr/avr/include/avr/io.h:
 
@@ -50,3 +51,5 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
 /Applications/microchip/xc8/v2.41/avr/avr/include/util/delay_basic.h:
 
 /Applications/microchip/xc8/v2.41/avr/avr/include/math.h:
+
+/Applications/microchip/xc8/v2.41/avr/avr/include/avr/interrupt.h:
