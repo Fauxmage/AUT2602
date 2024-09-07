@@ -1,11 +1,9 @@
 # Set MCU and tools
-MCU = AVR128DB48
-CC = xc8-cc                      # Assuming xc8 is installed and available in PATH
-PROGRAMMER = pkobn_updi           # Programmer for flashing
-OBJCOPY = avr-objcopy             # Standard GNU avr-objcopy on Linux
-DFP_PATH = /opt/microchip/dfp     # Update this to the location of your DFP on Ubuntu
-CFLAGS = -mcpu=$(MCU) -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -mconst-data-in-progmem -mno-const-data-in-config-mapped-progmem
-LDFLAGS = -mcpu=$(MCU) -Wl,--gc-sections -Wl,--defsym=__MPLAB_BUILD=1 -Wl,--start-group -lm -Wl,--end-group
+MCU = avr128db48                  # Update with your AVR architecture
+CC = avr-gcc                      # Use avr-gcc instead of xc8-cc
+OBJCOPY = avr-objcopy             # GNU objcopy for AVR
+CFLAGS = -mmcu=$(MCU) -Os -Wall   # Use avr-gcc flags
+LDFLAGS = -mmcu=$(MCU)
 SRC = main.c
 OBJ = $(SRC:.c=.o)
 ELF = main.elf
@@ -15,7 +13,7 @@ HEX = main.hex
 all: $(HEX)
 
 $(OBJ): $(SRC)
-	$(CC) $(CFLAGS) -mdfp=$(DFP_PATH) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(ELF): $(OBJ)
 	$(CC) $(OBJ) -o $@ $(LDFLAGS)
@@ -24,8 +22,7 @@ $(HEX): $(ELF)
 	$(OBJCOPY) -O ihex $< $@
 
 flash: $(HEX)
-	avrdude -p $(MCU) -c $(PROGRAMMER) -U flash:w:$(HEX):i
+	avrdude -p $(MCU) -c pkobn_updi -U flash:w:$(HEX):i
 
 clean:
 	rm -f $(OBJ) $(ELF) $(HEX)
-
