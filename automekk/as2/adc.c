@@ -5,11 +5,11 @@
 #define SCALING_FACTOR 4096
 
 
-void adc_init(){
+void adc_init(void){
 	ADC0.CTRLA |= ADC_ENABLE_bm;
 }
 
-void adc_en_freerun(){
+void adc_en_freerun(void){
 	ADC0.CTRLA |= ADC_FREERUN_bm;
 }
 
@@ -34,13 +34,12 @@ void adc_clock(ADC_PRESC_t clck){
 	ADC0.CTRLC = clck;
 }
 
-uint16_t adc_get_data(){
+uint16_t adc_get_data(void){
 	while(!(ADC.INTFLAGS & ADC_RESRDY_bm));
 	return ADC0.RES;
 }
 
-void init_tmp_sensor(){
-	
+void init_temp_sensor(void){	
 	adc_en_freerun();
 	adc_vref(VREF_REFSEL_2V048_gc);
 	adc_input_sel(ADC_MUXPOS_TEMPSENSE_gc);
@@ -53,8 +52,7 @@ void init_tmp_sensor(){
 }
 
 
-
-uint16_t adc_read_tmp(){
+uint16_t adc_read_temp(void){
 	//------  Following code is from AVRDB128DBXX  ------//
 	uint16_t sigrow_slope = SIGROW.TEMPSENSE0; // Read unsigned gain/slope from signature row
 	uint16_t sigrow_offset = SIGROW.TEMPSENSE1; // Read unsigned offset from signature row
@@ -67,5 +65,3 @@ uint16_t adc_read_tmp(){
 	int16_t temperature_in_C = temp - 273;
 	return temperature_in_C = temp - 273;
 }
-
-
