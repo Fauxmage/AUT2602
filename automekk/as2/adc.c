@@ -10,7 +10,7 @@
 
 #include <avr/interrupt.h>
 
-#define SAMP_NUM 8
+#define SAMP_NUM 16
 #define SAMP_LEN 8 
 #define SCALING_FACTOR 4096
 #define KELVIN 273
@@ -67,7 +67,7 @@ void init_temp_sensor(){
 	adc_input_sel(ADC_MUXPOS_TEMPSENSE_gc);
 
 	// Set ADC sample length and how many samples to accumualte 
-	adc_sampling(ADC_SAMPNUM_ACC4_gc, SAMP_LEN);
+	adc_sampling(ADC_SAMPNUM_ACC16_gc, SAMP_LEN);
 
 	// Enable freerun mode
 	adc_en_freerun();
@@ -88,7 +88,7 @@ void init_temp_sensor(){
 int16_t adc_read_temp(){
 	uint16_t sigrow_slope = SIGROW.TEMPSENSE0;
 	uint16_t sigrow_offset = SIGROW.TEMPSENSE1;
-	uint16_t adc_reading = adc_get_data();
+	uint16_t adc_reading = adc_get_data()/SAMP_NUM;
 	uint32_t temp = sigrow_offset - adc_reading;
 	temp *= sigrow_slope;
 	temp += SCALING_FACTOR / 2;

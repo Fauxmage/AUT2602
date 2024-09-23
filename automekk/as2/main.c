@@ -22,16 +22,23 @@
 
 int main(void){
     // Initialize USART3, PB, Baudrate 9600, tx-pin as output
-    usart_init(&USART3, &PORTB, 9600, 0);
-    
+	usart_init(&USART3, &PORTB, 9600, 0);
 	init_temp_sensor();
+	
 	char buffer[32];
 
 
-	//char test_message[] = "Hello, World!\r\n";
-	//usart_transmit_data(&USART3, test_message);
 	printf("Hello\n");
+	
+	uint16_t temp;
+
+	sei();
     while(1){
+
+		temp = adc_read_temp();
+
+		printf("temp = %d\n", temp);
+
 		printf("T%dC\n", 4);
 		
         _delay_ms(1000);

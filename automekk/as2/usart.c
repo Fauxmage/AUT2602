@@ -1,6 +1,8 @@
 #define F_CPU 4000000UL
 #include "usart.h"
 #include "config.h"
+
+
 #include <xc.h>
 #include <avr/io.h>
 
@@ -17,24 +19,20 @@ void usart_init(USART_t *u_num, PORT_t *u_port, uint16_t baud, uint8_t tx_pin){
 	usart = u_num;
 }
 
-void usart_send_char(USART_t *u_num, uint8_t data){
+void usart_send_char(USART_t *u_num, char data){
     while (!(u_num->STATUS & USART_DREIF_bm));
     u_num->TXDATAL = data;
 }
 
 
-static uint8_t USART3_send_char ( char c , FILE * stream ){ 
-	//while(!(USART3.STATUS & USART_DREIF_bm));
-	//USART3.TXDATAL = c;
-	usart_send_char(&USART3, (uint8_t) c);
+static uint8_t USART3_send_char(char c, FILE *stream){ 
+	usart_send_char(&USART3, c);
 	return 0;
 }
 
 
-
-
 void usart_transmit_data(USART_t *u_num, char *data_str){
 	for(uint8_t i = 0; data_str[i] != '\0'; i++){
-		usart_send_char(u_num, data_str[i]);
+		usart_send_char(&USART3, data_str[i]);
 	}
 }
