@@ -1,0 +1,17 @@
+# Ignore virtual environment
+/avrvenv
+
+# Ignore macOS system file
+.DS_Store
+
+# Ignore old files
+/old
+
+# Ignore pycache
+__pycache__
+
+# Ignore object, hex and elf files
+.o
+.hex
+.elf
+
