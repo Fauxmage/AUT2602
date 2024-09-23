@@ -2,6 +2,7 @@
 #ifndef USART_H
 #define USART_H
 
+#include <xc.h>
 #include <avr/io.h>
 
 

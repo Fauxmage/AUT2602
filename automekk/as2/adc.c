@@ -1,4 +1,6 @@
 #include "adc.h"
+#include <xc.h>
+#include <avr/io.h>
 
 #define SAMP_NUM 16
 #define SAMP_LEN 8 
@@ -35,7 +37,7 @@ void adc_clock(ADC_PRESC_t clck){
 }
 
 uint16_t adc_get_data(void){
-	while(!(ADC.INTFLAGS & ADC_RESRDY_bm));
+	while(!(ADC0.INTFLAGS & ADC_RESRDY_bm));
 	return ADC0.RES;
 }
 
