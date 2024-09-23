@@ -4,6 +4,7 @@ CC = /Applications/microchip/xc8/v2.41/bin/xc8-cc
 PROGRAMMER = pkobn_updi
 OBJCOPY = /Applications/microchip/xc8/v2.41/bin/avr-objcopy
 DFP_PATH = /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8
+#CFLAGS = -mcpu=$(MCU) -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -mconst-data-in-progmem -mno-const-data-in-config-mapped-progmem
 
 # Compiler and linker flags
 CFLAGS = -mcpu=$(MCU) -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common \
@@ -41,7 +42,6 @@ $(HEX): $(ELF)
 # Flash the microcontroller using avrdude
 flash: $(HEX)
 	avrdude -p $(MCU) -c $(PROGRAMMER) -U flash:w:$(HEX):i
-
 # Clean up generated files
 clean:
 	rm -f $(OBJ) $(ELF) $(HEX)
