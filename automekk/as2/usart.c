@@ -3,27 +3,23 @@
 #include <xc.h>
 #include <avr/io.h>
 
-
 void usart_init(USART_t *u_num, PORT_t *u_port, uint16_t baud, uint8_t tx_pin){
 	// Calculate baudrate
-	uint16_t baud_setting = 9600; //(uint16_t)(((64 * F_CPU) / (16 * baud)) + 0.5);
-	u_num->BAUD = baud_setting;
-
+	u_num->BAUD = B_RATE(baud);
 	// Enable transmitter
 	u_num->CTRLB |= USART_TXEN_bm | USART_RXMODE_NORMAL_gc;
-	
-	// Set TXpin as output
+	PORTB.PINCONFIG |= PORT_PULLUPEN_bm;
+	// Set TXpin(0) as output
 	u_port->DIRSET |= (1 << tx_pin);
-	
 }
 
-void usart_send_char(USART_t *u_num, char data){
+void usart_send_char(USART_t *u_num, uint8_t data){
     while (!(u_num->STATUS & USART_DREIF_bm));
-    u_num->TXDATAL = data;
+    u_num->TXDATAL = (register8_t)(data);
 }
 
-void usart_transmit_data(USART_t *u_num, const char *data_str){
-    while (*data_str){
-        usart_send_char(u_num, *data_str++);
-    }
+void usart_transmit_data(USART_t *u_num, char *data_str){
+	for(uint8_t i = 0; data_str[i] != '\0'; i++){
+		usart_send_char(u_num, data_str[i]);
+	}
 }

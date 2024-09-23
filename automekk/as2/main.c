@@ -1,7 +1,6 @@
 /*
 * Ulrik Brochmann, ubr004@uit.no
 */
-
 #include "adc.h"
 #include "usart.h"
 #include "config.h"
@@ -13,21 +12,23 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 #define BUFFER 32
+#define MS_DELAY 1000
+#define B_RATE 9600
+#define TX_PIN 0
 
 
 int main(void){
-    // Initialize
-    usart_init(&USART3, &PORTB, 9600, PIN0_bp);
-    init_temp_sensor();
+    // Initialize USART3, PB, Baudrate 9600, tx-pin as output
+    usart_init(&USART3, &PORTB, B_RATE, TX_PIN);
     
+	init_temp_sensor();	
+	
     char buffer[BUFFER];
-    int16_t temperature;
 
-    while(1)
-    {
-        temperature = adc_read_temp();
-        sprintf(buffer, "Temp: %d C\r\n", temperature);
+    while(1){
+        printf(buffer, "Temp: %d C\n", adc_read_temp());
         usart_transmit_data(&USART3, buffer);
         _delay_ms(1000);
     }
