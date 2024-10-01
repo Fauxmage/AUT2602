@@ -1,9 +1,10 @@
 #ifndef ADC_H
 #define ADC_H
+#define F_CPU 4000000UL
 
-#include <xc.h>
+#include <avr/interrupt.h>
 #include <avr/io.h>
-
+#include <util/delay.h>
 
 void adc_init();
 void adc_en_freerun();
@@ -16,6 +17,5 @@ void init_temp_sensor();
 
 uint16_t adc_get_data();
 uint16_t adc_read_temp();
-
 
 #endif /* ADC_H_ */

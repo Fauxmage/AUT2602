@@ -1,35 +1,30 @@
 /*
  * Ulrik Brochmann, ubr004@uit.no
  */
+
 #define F_CPU 4000000UL
+
+#include <avr/interrupt.h>
+#include <avr/io.h>
+#include <stdio.h>
+#include <util/delay.h>
 
 #include "adc.h"
 #include "usart.h"
 
-#include <avr/interrupt.h>
-#include <avr/io.h>
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <util/delay.h>
-#include <xc.h>
+#define BUFF 16
 
 int main(void) {
 
   // Initialize USART3, PB, Baudrate 9600, tx-pin as output
-  usart_usb_init();
-  usart_init(&USART3, &PORTB, 0, 0);
+  usart_usb_init(9600);
 
   init_temp_sensor();
 
-  char buffer[32];
-  printf("Hello\n");
-
-  sei();
   while (1) {
+    uint8_t temp = adc_read_temp();
+    printf("Temp: %dC\n", temp);
 
-    sprintf(buffer, "TEMPERATURE! %dC \n", adc_read_temp());
-    printf("T: %d\n", adc_read_temp());
-    _delay_ms(100);
+    _delay_ms(1000);
   }
 }
