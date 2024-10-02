@@ -15,7 +15,7 @@ DFP_PATH = /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.2
 CFLAGS = -mmcu=$(MCU) -Wall -Wl,--gc-sections -O1 -ffunction-sections \
          -fdata-sections -fshort-enums -fno-common -funsigned-char \
          -funsigned-bitfields -D__DEBUG=1 -g -DDEBUG -gdwarf-2 -MD -MP \
-         -B$(DFP_PATH)/gcc/dev/avr128db48
+         -B$(DFP_PATH)/gcc/dev/avr128db48 
 LDFLAGS = -mmcu=$(MCU) -L$(DFP_PATH)/gcc/lib/avr6
 
 # Source files
