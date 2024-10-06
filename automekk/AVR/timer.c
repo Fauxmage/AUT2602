@@ -2,9 +2,10 @@
 #include "usart.h"
 
 void clk_run_stdby(uint8_t en_stdby){
-	if (en_stdby) {
+	if (en_stdby){
         CLKCTRL.MCLKCTRLB |= CLKCTRL_RUNSTDBY_bm;  // Enable run in standby
-    } else {
+    } 
+	else{
         CLKCTRL.MCLKCTRLB &= ~CLKCTRL_RUNSTDBY_bm; // Disable run in standby
     }
 }
@@ -16,7 +17,9 @@ void clk_mc_osc(){
 
 void clock_init_16MHz(){
     // Enable 16MHz clock
-    ccp_write_io((void *) &CLKCTRL.MCLKCTRLA, 0x0); }
+    ccp_write_io((void *) &CLKCTRL.MCLKCTRLA, 0x0); 
+}
+
 
 void init_timer_tca0(uint16_t period, uint16_t div){
     TCA0.SINGLE.PER = period; //65535;  
@@ -31,10 +34,9 @@ void init_led(){
    PORTB.DIRSET = (1 << 3);
 }
 
-ISR(TCA0_OVF_vect) {
+ISR(TCA0_OVF_vect){
 	PORTB.OUTTGL = (1 << 3); // Toggle LED
-	//
-	// PORTF.OUTTGL = (1 << 2);
+	PORTF.OUTTGL = (1 << 2);
 	
     TCA0.SINGLE.INTFLAGS |= TCA_SINGLE_OVF_bm;  // Clear flag
 }
@@ -45,7 +47,7 @@ void scale_frequency(uint16_t start_freq, uint16_t end_freq, uint16_t div){
     uint32_t start_per = (16000000 / ((uint32_t)div * (uint32_t)start_freq));
     uint32_t end_per = (16000000 / ((uint32_t)div * (uint32_t)end_freq));
 
-    for (uint16_t per = start_per; per >= end_per; per--) {
+    for (uint16_t per = start_per; per >= end_per; per--){
 		printf("Per %u\n", per);
 		// Set new PER value
         TCA0.SINGLE.PER = per;  
