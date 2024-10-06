@@ -1,4 +1,4 @@
-#define F_CPU 4000000UL
+#define F_CPU 16000000UL
 #define B_RATE(BAUD) ((64 * F_CPU) / (16 * (float)BAUD) + 0.5)
 
 #include "usart.h"

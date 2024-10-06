@@ -1,9 +1,10 @@
 # Set MCU and tools
 MCU = avr128db48
-CC =  /Applications/microchip/xc8/v2.41/bin/xc8-cc
+CC = /Applications/microchip/xc8/v2.50/bin/xc8-cc
 PROGRAMMER = pkobn_updi
-OBJCOPY = /Applications/microchip/xc8/v2.41/bin/avr-objcopy
-DFP_PATH = /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/xc8
+OBJCOPY = /Applications/microchip/xc8/v2.50/bin/avr-objcopy
+DFP_PATH = /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.272/include/avr/
+
 # Compiler and linker flags
 #CFLAGS = -mcpu=$(MCU) -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common \
          -funsigned-char -funsigned-bitfields -Wall -mconst-data-in-progmem \
@@ -12,14 +13,25 @@ DFP_PATH = /Applications/microchip/mplabx/v6.15/packs/Microchip/AVR-Dx_DFP/2.3.2
           -lm -Wl,--end-group
 
 # Compiler and linker flags
-CFLAGS = -mmcu=$(MCU) -Wall -Wl,--gc-sections -O1 -ffunction-sections \
+#CFLAGS = -mmcu=$(MCU) -Wall -Wl,--gc-sections -O1 -ffunction-sections \
          -fdata-sections -fshort-enums -fno-common -funsigned-char \
          -funsigned-bitfields -D__DEBUG=1 -g -DDEBUG -gdwarf-2 -MD -MP \
          -B$(DFP_PATH)/gcc/dev/avr128db48 
-LDFLAGS = -mmcu=$(MCU) -L$(DFP_PATH)/gcc/lib/avr6
+#LDFLAGS = -mmcu=$(MCU) -L$(DFP_PATH)/gcc/lib/avr6
+
+
+# Compiler and linker flags
+CFLAGS = -mcpu=$(MCU) -Wall -Wl,--gc-sections -O1 -ffunction-sections \
+         -fdata-sections -fshort-enums -fno-common -funsigned-char \
+         -funsigned-bitfields -D__DEBUG=1 -g -DDEBUG -gdwarf-2 -MD -MP \
+         -I$(DFP_PATH) -B$(DFP_PATH) -mn-flash=4 -mno-skip-bug
+
+
+LDFLAGS = -mcpu=$(MCU) -L$(DFP_PATH) -mrelax
+
 
 # Source files
-SRC = main.c usart.c adc.c
+SRC = main.c usart.c adc.c timer.c
 
 # Object files
 OBJ = $(SRC:.c=.o)

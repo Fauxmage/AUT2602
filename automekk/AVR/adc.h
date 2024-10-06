@@ -1,7 +1,10 @@
-#ifndef ADC_H
-#define ADC_H
-#define F_CPU 4000000UL
+#ifndef ADC_H_
+#define ADC_H_
 
+
+#define F_CPU 16000000UL
+
+//#include "specs.h"
 #include <avr/interrupt.h>
 #include <avr/io.h>
 #include <util/delay.h>
