@@ -30,7 +30,7 @@ int main(void) {
 	
 
 	scale_frequency(1000, 5000, 256);
-	
+	scale_buzz(16000, 350, 256);
 	sei();
 	while (1) {
 		uint8_t temp = adc_read_temp();
