@@ -36,7 +36,7 @@ void init_led(){
 ISR(TCA0_OVF_vect){
 	PORTB.OUTTGL = (1 << 3);  // Toggle LED
 	PORTF.OUTTGL = (1 << 2);  // Toggle buzzer
-  TCA0.SINGLE.INTFLAGS |= TCA_SINGLE_OVF_bm;   // Clear flag
+	TCA0.SINGLE.INTFLAGS |= TCA_SINGLE_OVF_bm;   // Clear flag
 }
 
 void scale_frequency(uint16_t start_freq, uint16_t end_freq, uint16_t div){
@@ -64,19 +64,20 @@ void scale_buzz(uint16_t start_freq, uint16_t end_freq, uint16_t div){
     uint32_t start_per = (16000000 / ((uint32_t)div * (uint32_t)start_freq));
     uint32_t end_per = (16000000 / ((uint32_t)div * (uint32_t)end_freq));
     // Gradually adjust the PER value from start to end and back
-    for (uint8_t i = 0; i < steps; i++) {
-        // Ramp up
-        for (uint32_t per = start_per; per >= end_per; per--) {
-            TCA0.SINGLE.PER = (uint16_t)per;  // Set the PER value
-            _delay_ms(100);  // Wait before increasing the frequency further
-        }
-        // Ramp down
-        for (uint32_t per = end_per; per <= start_per; per++) {
-            TCA0.SINGLE.PER = (uint16_t)per;  // Set the PER value
-            _delay_ms(100);  // Wait before decreasing the frequency further
-        }
+    // Ramp up
+	for (uint16_t per = start_per; per >= end_per; per--){
+		printf("Ramp up, per: %lu", per);
+		TCA0.SINGLE.PER = per;  // Set the PER value
+		_delay_ms(10);  // Wait before increasing the frequency further
+    }
+    // Ramp down
+	for (uint16_t per = end_per; per <= start_per; per++){
+		printf("Ramp down, per: %lu\n", per);
+		TCA0.SINGLE.PER = per;  // Set the PER value
+		_delay_ms(10);  // Wait before decreasing the frequency further
     }
 }
+
 
 void t_clock_init(uint16_t period, uint16_t div){	
 	clk_run_stdby(1);

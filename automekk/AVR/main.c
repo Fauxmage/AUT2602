@@ -27,10 +27,10 @@ int main(void) {
 	
 	
 	t_clock_init(65535, TCA_SINGLE_CLKSEL_DIV256_gc);
+	scale_buzz(10000, 1000, 256, 5);
 	
 
-	scale_frequency(1000, 5000, 256);
-	scale_buzz(16000, 350, 256);
+	// scale_frequency(15000, 300, 256);
 	sei();
 	while (1) {
 		uint8_t temp = adc_read_temp();
