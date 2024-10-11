@@ -30,6 +30,9 @@ CFLAGS = -mcpu=$(MCU) -Wall -Wl,--gc-sections -O1 -ffunction-sections \
 LDFLAGS = -mcpu=$(MCU) -L$(DFP_PATH) -mrelax
 
 
+# Dependency files
+DEPS = $(SRC:.c=.d)
+
 # Source files
 SRC = main.c usart.c adc.c timer.c
 
@@ -58,7 +61,14 @@ $(HEX): $(ELF)
 # Flash the microcontroller using avrdude
 flash: $(HEX)
 	avrdude -p $(MCU) -c $(PROGRAMMER) -U flash:w:$(HEX):i
+
+# Clean up generated files
+# clean:
+# 	rm -f $(OBJ) $(ELF) $(HEX)
+
 # Clean up generated files
 clean:
-	rm -f $(OBJ) $(ELF) $(HEX)
+	rm -f $(OBJ) $(ELF) $(HEX) $(DEPS)
 
+# Include dependency files
+-include $(DEPS)
